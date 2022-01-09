@@ -26,7 +26,8 @@ class StringCalculatorServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testAddNegativeThrowsException(): void {
+    public function testAddNegativeThrowsException(): void
+    {
         $input = "1,-2,3";
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("-2");
