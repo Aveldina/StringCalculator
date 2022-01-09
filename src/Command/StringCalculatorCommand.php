@@ -18,13 +18,14 @@ class StringCalculatorCommand extends Console\Command\Command
 
     protected function configure(): void
     {
-        $this->setDescription('Reverses a string');
-        $this->addArgument('input', Console\Input\InputArgument::REQUIRED, 'A string that will be reversed');
+        $this->setDescription('Splits and calculates a string');
+        $this->addArgument('input', Console\Input\InputArgument::REQUIRED, 'A string that will be calculated');
     }
 
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output): int
     {
-        $output->writeln($this->stringCalculatorService->outputTest());
+        $inputString = strval($input->getArgument('input'));
+        $output->writeln((string) $this->stringCalculatorService->add($inputString));
 
         return self::SUCCESS;
     }
