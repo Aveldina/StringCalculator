@@ -31,10 +31,13 @@ class StringCalculatorServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * @return array<int, array<int, mixed>>
+     */
     public function addReturnsExpectedProvider(): array
     {
         return [
-            [ "1,2,5", 8],
+            ["1,2,5", 8],
             ["", 0],
             ["5,10,5", 20],
             ["999,1", 1000],
