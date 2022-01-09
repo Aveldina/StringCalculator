@@ -38,6 +38,9 @@ class StringCalculatorServiceTest extends TestCase
             ["1\n,2,3", 6],
             ["1,\n2,4", 7],
             ["1,\n\r2,4", 7],
+            ["//;\n1;3;4", 8],
+            ["//$\n1$2$3", 6],
+            ["//@\n2@3@8", 13],
         ];
     }
 }
