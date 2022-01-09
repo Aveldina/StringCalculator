@@ -28,9 +28,9 @@ class StringCalculatorServiceTest extends TestCase
 
     public function testAddNegativeThrowsException(): void
     {
-        $input = "1,-2,3";
+        $input = '1,-2,3';
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("-2");
+        $this->expectExceptionMessage('-2');
 
         $result = $this->service->add($input);
     }
@@ -41,19 +41,20 @@ class StringCalculatorServiceTest extends TestCase
     public function addReturnsExpectedProvider(): array
     {
         return [
-            ["1,2,5", 8],
-            ["", 0],
-            ["5,10,5", 20],
-            ["999,1", 1000],
-            ["1001,1", 1],
-            ["2,3,1001,1", 6],
-            ["2,3,1000,1", 1006],
+            ['1,2,5', 8],
+            ['', 0],
+            ['1', 1],
+            ['5,10,5', 20],
+            ['999,1', 1000],
+            ['1001,1', 1],
+            ['2,3,1001,1', 6],
+            ['2,3,1000,1', 1006],
             ["1\n,2,3", 6],
             ["1,\n2,4", 7],
             ["1,\n\r2,4", 7],
             ["//;\n1;3;4", 8],
             ["//$\n1$2$3", 6],
-            ["//@\n2@3@8", 13]
+            ["//@@\n2@@3@@8", 13]
         ];
     }
 }
