@@ -8,15 +8,15 @@ class StringCalculatorService
 
     public function add(string $input): int
     {
-        if (strlen($input) == 0) {
+        if (0 == strlen($input)) {
             return 0;
         }
 
         $separatorControlCheck = substr($input, 0, 2);
-        if (strcmp($separatorControlCheck, "//")  == 0) {
+        if (0 == strcmp($separatorControlCheck, '//')) {
             $inputData = preg_split('/\R/m', $input, 2, PREG_SPLIT_NO_EMPTY);
-            if ($inputData == false || count($inputData) != 2) {
-                throw new \Exception("Incorrect input string format");
+            if (false == $inputData || 2 != count($inputData)) {
+                throw new \Exception('Incorrect input string format');
             }
             $separatorString = substr($inputData[0], 2);
             $dataString = $inputData[1];
@@ -41,6 +41,7 @@ class StringCalculatorService
                 $sum += $item;
             }
         }
+
         return $sum;
     }
 }
