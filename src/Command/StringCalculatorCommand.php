@@ -25,6 +25,7 @@ class StringCalculatorCommand extends Console\Command\Command
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output): int
     {
         $inputString = strval($input->getArgument('input'));
+        $inputString = str_replace("\\n", PHP_EOL, $inputString);
         $output->writeln((string) $this->stringCalculatorService->add($inputString));
 
         return self::SUCCESS;

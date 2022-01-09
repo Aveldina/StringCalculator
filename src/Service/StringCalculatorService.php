@@ -12,7 +12,7 @@ class StringCalculatorService
 
         $separatorControlCheck = substr($input, 0, 2);
         if (strcmp($separatorControlCheck, "//")  == 0) {
-            $inputData = preg_split('/\n/', $input, 2, PREG_SPLIT_NO_EMPTY);
+            $inputData = preg_split('/\R/m', $input, 2, PREG_SPLIT_NO_EMPTY);
             if ($inputData == false || count($inputData) != 2) {
                 throw new \Exception("Incorrect input string format");
             }
