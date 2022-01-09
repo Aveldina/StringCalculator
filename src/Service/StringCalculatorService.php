@@ -30,7 +30,19 @@ class StringCalculatorService
 
     private function calculateValue(string $input, string $separator = ','): int
     {
-        $inputArray = explode($separator, $input);
+        if (0 == strcmp($separator, ',')) {
+            $pattern = '/,/';
+        } else {
+            if (str_contains($separator, ',')) {
+                $separatorArray = preg_split('/,/', $separator, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+                $separatorArray = array_map('preg_quote', $separatorArray);
+                $pattern = '/['.implode('|', $separatorArray).']/';
+            } else {
+                $pattern = '/'.preg_quote($separator).'/';
+            }
+        }
+
+        $inputArray = preg_split($pattern, $input, -1, PREG_SPLIT_NO_EMPTY) ?: [];
         $sum = 0;
         foreach ($inputArray as $item) {
             $item = intval($item);
