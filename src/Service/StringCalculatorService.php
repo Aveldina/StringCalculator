@@ -4,6 +4,8 @@ namespace App\Service;
 
 class StringCalculatorService
 {
+    private const MAX_ALLOWED_NUMBER = 1000;
+
     public function add(string $input): int
     {
         if (strlen($input) == 0) {
@@ -35,7 +37,9 @@ class StringCalculatorService
             if ($item < 0) {
                 throw new \Exception((string) $item);
             }
-            $sum += $item;
+            if ($item <= self::MAX_ALLOWED_NUMBER) {
+                $sum += $item;
+            }
         }
         return $sum;
     }
