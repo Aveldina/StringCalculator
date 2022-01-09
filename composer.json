@@ -47,16 +47,6 @@
         "symfony/polyfill-php80": "*"
     },
     "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ],
         "cs-fix": [
             "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
             "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests"
