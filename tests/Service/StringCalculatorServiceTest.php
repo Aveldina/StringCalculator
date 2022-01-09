@@ -14,12 +14,6 @@ class StringCalculatorServiceTest extends TestCase
         $this->service = new StringCalculatorService();
     }
 
-    public function testServiceSetup(): void
-    {
-        $result = $this->service->outputTest();
-        $this->assertIsString($result);
-    }
-
     /**
      * @dataProvider addReturnsExpectedProvider
      */
@@ -41,7 +35,9 @@ class StringCalculatorServiceTest extends TestCase
             ["", 0],
             ["5,10,5", 20],
             ["999,1", 1000],
-            ["2,2,2,2,2,2,2,2,2,2,2,2", 24]
+            ["1\n,2,3", 6],
+            ["1,\n2,4", 7],
+            ["1,\n\r2,4", 7],
         ];
     }
 }
