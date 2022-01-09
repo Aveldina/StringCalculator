@@ -3,6 +3,7 @@
 namespace App\Tests\Service;
 
 use App\Service\StringCalculatorService;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class StringCalculatorServiceTest extends TestCase
@@ -25,12 +26,12 @@ class StringCalculatorServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testAddNegativeThrowsException() {
+    public function testAddNegativeThrowsException(): void {
         $input = "1,-2,3";
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage("-2");
 
-        $this->service->add($input);
+        $result = $this->service->add($input);
     }
 
     /**
