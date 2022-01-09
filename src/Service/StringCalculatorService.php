@@ -13,10 +13,12 @@ class StringCalculatorService
         $separatorControlCheck = substr($input, 0, 2);
         if (strcmp($separatorControlCheck, "//")  == 0) {
             $inputData = preg_split('/\n/', $input, 2, PREG_SPLIT_NO_EMPTY);
+            if ($inputData == false || count($inputData) != 2) {
+                throw new \Exception("Incorrect input string format");
+            }
             $separatorString = substr($inputData[0], 2);
             $dataString = $inputData[1];
-        }
-        else {
+        } else {
             $separatorString = ',';
             $dataString = $input;
         }
@@ -24,7 +26,8 @@ class StringCalculatorService
         return $this->calculateValue($dataString, $separatorString);
     }
 
-    private function calculateValue(string $input, string $separator = ','): int {
+    private function calculateValue(string $input, string $separator = ','): int
+    {
         $inputArray = explode($separator, $input);
         $sum = 0;
         foreach ($inputArray as $item) {
