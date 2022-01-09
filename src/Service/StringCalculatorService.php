@@ -28,7 +28,11 @@ class StringCalculatorService
         $inputArray = explode($separator, $input);
         $sum = 0;
         foreach ($inputArray as $item) {
-            $sum += intval($item);
+            $item = intval($item);
+            if ($item < 0) {
+                throw new \Exception((string) $item);
+            }
+            $sum += $item;
         }
         return $sum;
     }
